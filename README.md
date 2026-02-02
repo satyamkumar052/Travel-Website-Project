@@ -76,7 +76,7 @@ DB_URL=mongodb://127.0.0.1:27017/airbnb
 ## Running the Project
 
 ```bash
-node index.js
+node app.js
 ```
 
 Then open:
