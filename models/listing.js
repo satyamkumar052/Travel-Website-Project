@@ -12,7 +12,7 @@ const listingSchema = new Schema({
     image:{
         url : String,
         filename : String,
-        },
+    },
     price:Number,
     location:String,
     country:String,
@@ -28,11 +28,11 @@ const listingSchema = new Schema({
     }
 });
 
-listingSchema.post("findOneAndDelete",async (listing)=>{
+listingSchema.post("findOneAndDelete", async (listing)=>{
     if(listing){
         await Review.deleteMany({_id : {$in : listing.review}});
     }
 });
 
-const Listing = mongoose.model("Listing",listingSchema);
+const Listing = mongoose.model("Listing", listingSchema);
 module.exports = Listing;
