@@ -2,7 +2,7 @@ const Listing = require("../models/listing");
 
 module.exports.index = async (req,res)=>{
     const allListings = await Listing.find({});
-    res.render("./listing/index.ejs",{ allListings });
+    res.render("./listing/index.ejs", { allListings });
 };
 
 
@@ -13,7 +13,7 @@ module.exports.renderNewForm = (req,res)=>{
 
 module.exports.showListing = async (req,res)=>{
     let {id} = req.params;
-    const listing = await Listing.findById(id).populate({path:"review",populate:{
+    const listing = await Listing.findById(id).populate({path:"review", populate:{
         path:"author",
     }}).populate("owner");
     if(!listing) {
@@ -62,7 +62,7 @@ module.exports.updateListing = async (req,res)=>{
 
 
 module.exports.destroyListing = async (req,res)=>{
-    let {id} = req.params;
+    let { id } = req.params;
     await Listing.findByIdAndDelete(id);
     req.flash("success","listing deleted successfully!");
     res.redirect(`/listings`);
