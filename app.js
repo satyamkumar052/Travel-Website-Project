@@ -58,7 +58,7 @@ const sessionOption = {
     secret : process.env.SECRET,
     resave : false,
     saveUninitialized : true,
-    cookie :{
+    cookie : {
         expires : Date.now() + 7 * 24 * 60 * 60 * 1000,
         maxAge : 7 * 24 * 60 * 60 * 1000,
         httpOnly : true
@@ -94,8 +94,8 @@ app.get("/demouser", async (req,res,next)=> {
 });
 
 
-app.use("/listings",listingRouter);
-app.use("/listings/:id/reviews",reviewRouter);
+app.use("/listings", listingRouter);
+app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
 
@@ -106,7 +106,7 @@ app.all("*",(req, res, next) => {
 
 
 app.use((err, req, res, next)=>{
-    let {statusCode=400,message} = err;
+    let { statusCode = 400, message } = err;
     res.status(statusCode).send(message);
     // res.render("error.ejs",{err});
 });
