@@ -4,25 +4,25 @@ const Review = require('./reviews.js');
 const user = require('./user.js');
 
 const listingSchema = new Schema({
-    title:{
+    title: {
         type:String,
         required:true,
     },
     description:String,
-    image:{
+    image: {
         url : String,
         filename : String,
     },
-    price:Number,
-    location:String,
-    country:String,
+    price: Number,
+    location: String,
+    country: String,
     review : [
         {
             type : Schema.Types.ObjectId,
             ref : "Review",
         }
     ],
-    owner : {
+    owner: {
         type : Schema.Types.ObjectId,
         ref : "User",
     }
